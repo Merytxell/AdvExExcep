@@ -4,27 +4,21 @@ public class Adv3Ex3File {
 		public class Resto {
 		
 
-		public int menu;
+		
 		public String starter;
 		public String dish;
 		public String dessert;
 		
 		
-		public Resto (int menu, String starter,String dish,String dessert) {
-			this.menu= menu;
+		public Resto ( String starter,String dish,String dessert) {
+			
 			this.starter=starter;
 			this.dish=dish; 
 			this.dessert=dessert;
 		}
-
-		public int getMenu() {
-				return menu;
-			}
-
-
-			public void setMenu(int menu) {
-				this.menu = menu;
-			}
+		
+		 public void display() { System.out.println("voici le menu 1 : " + this.starter + " le menu 2 : " + 
+	  				 this.dish + " et enfin le menu 3" + this.dessert);	}
 
 
 			public String getStarter() {
