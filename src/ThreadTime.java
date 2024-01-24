@@ -1,7 +1,3 @@
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -12,13 +8,12 @@ public class ThreadTime extends Thread{
 	  
 	 
 	  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-	
- 
+	 
    
     	while(true) {
     		LocalTime df= LocalTime.now();
     		String timeFormat = df.format(formatter);
-    		System.out.println(timeFormat);
+    		System.out.printf(timeFormat + "\t");
     		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
