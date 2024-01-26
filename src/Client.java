@@ -2,10 +2,11 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Client implements Runnable {
-	super(name);
+	//super(name); il était déjà en dessous
 	private String name;
 	private Menu menu;
 	private Lock lock;
+
 
 
 	public Client (String name, Menu menu) {
@@ -34,8 +35,36 @@ public class Client implements Runnable {
 		String[] plates = {"salade", "quiche", "soupe","aucun" };
 		String randomPlate = plates[(int) (Math.random()*plates.length)];
 		
+		lock.lock();
+		
+		try {
 		menu.choosePlate(randomPlate);
+	}finally {
+	lock.unlock();
+	
+	}
+	}
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Menu getMenu() {
+		return menu;
+	}
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
+	public Lock getLock() {
+		return lock;
+	}
+	public void setLock(Lock lock) {
+		this.lock = lock;
 	}
 
 }
+
 
