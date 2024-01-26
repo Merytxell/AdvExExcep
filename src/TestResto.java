@@ -21,4 +21,9 @@ public class TestResto {
 		System.out.println("les desserts à la carte" + dessert);
 		
 }
+	
+	Thread client1 = new Thread(new Client("Client 1", menu));
+    Thread client2 = new Thread(new Client("Client 2", menu));
+
+	
 }

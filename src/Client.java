@@ -1,5 +1,5 @@
 
-public class ChoiseMenu implements Runnable{
+public class Client implements Runnable{
 	//choix des clients
 	//super();
 	public String client; 
