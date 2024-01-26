@@ -57,7 +57,8 @@ public class TpResto {
 		String FileName = "ResultOrder.txt";
 
 		try( BufferedWriter writer = new BufferedWriter (new FileWriter  (FileName, true))){
-			writer.write("Résumé de la commande ");
+			int orderNbr =1;
+			writer.write("**********Résumé de la commande "+ (++orderNbr) + " **********"+ "\n ");
 			for (String item : order) {
 				writer.write(item + " , ");
 			}
@@ -71,10 +72,11 @@ public class TpResto {
 	private static void displayAllOrders() throws IOException {
 		String fileName = "ResultOrder.txt";
 		try (Scanner scan = new Scanner(fileName)) {
-			int orderNbr = 1;
+			//int orderNbr = 0;
 			while (scan.hasNextLine()) {
 				String line = scan.nextLine();
-				orderNbr++;//ne compte pas le nombre de commmande comme voulu --> à traiter              
+				//System.out.println("Commande" + (++orderNbr) + " " + "\n");
+				//orderNbr++;//ne compte pas le nombre de commmande comme voulu --> à traiter              
 			}
 		}
 		}
