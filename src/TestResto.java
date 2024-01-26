@@ -48,10 +48,11 @@ public class TestResto extends Thread {
 	}
 
 	//récupérer les choix des clients en appelant la méthode Createfile
-	CreateFile(resultMenu.getResultMenu(),"order.txt");
-
+	CreateFile(resultMenu,"order.txt");
+	}
+	
 	//on doit écrire les résultats affiché en console ici "en forme de liste"
-	private static void  CreateFile (List <String> collect, String FileName ){
+	private static void  CreateFile (ResultMenu resultMenu, String FileName ){
 
 		File file = new File(FileName);
 		//File file = new File("C:\\Users\\AvilaC\\eclipse-workspace\\AdvExExcep\\order.txt");
@@ -63,11 +64,11 @@ public class TestResto extends Thread {
 		(FileWriter writer = new FileWriter(file);
 				BufferedWriter bw = new BufferedWriter(writer)){
 
-			for (String collects : collect) {
-				bw.write(collects);
+			for (String response : ????) {
+				bw.write(response);
 				bw.newLine();
-				bw.close();
-				writer.close();
+				//bw.close();
+				//writer.close();
 			}
 		} catch(IOException e) {
 			e.printStackTrace();
