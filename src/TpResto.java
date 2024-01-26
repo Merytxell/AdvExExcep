@@ -59,8 +59,9 @@ public class TpResto {
 		try( BufferedWriter writer = new BufferedWriter (new FileWriter  (FileName, true))){
 			int orderNbr =1;
 			writer.write("**********Résumé de la commande "+ (++orderNbr) + " **********"+ "\n ");
+			
 			for (String item : order) {
-				writer.write(item + " , ");
+				writer.write(item + " \n ");
 			}
 			writer.newLine();
 			System.out.println("résumé de la commande" + order +" a bien été enregistré dans le récapitulatif des commandes");
@@ -109,4 +110,6 @@ public class TpResto {
 }
 
 //reprise de la correction de Mohammed car je ne l'avais pas fais
-//reste à faire un meilleur affichage dans le fichier.txt
+//reste à faire un meilleur affichage dans le fichier.txt - ok
+//gérer la mise à jour des numéros de commande
+
