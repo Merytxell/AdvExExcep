@@ -38,13 +38,23 @@ public class TestResto extends Thread {
 		client1.start();
 		client2.start();
 
+	
+	try {
+	//join sert à attendre ue les threads se terminent
+		client1.join();
+		client2.join();
+	}catch (Exception e) {
+		e.printStackTrace();
 	}
 
+	//récupérer les choix des clients en appelant la méthode Createfile
+	CreateFile(resultMenu.getResultMenu(),"order.txt");
+
 	//on doit écrire les résultats affiché en console ici "en forme de liste"
-	private static void  CreateFile (List <String> collect, String File ){
+	private static void  CreateFile (List <String> collect, String FileName ){
 
-
-		File file = new File("C:\\Users\\AvilaC\\eclipse-workspace\\AdvExExcep\\order.txt");
+		File file = new File(FileName);
+		//File file = new File("C:\\Users\\AvilaC\\eclipse-workspace\\AdvExExcep\\order.txt");
 
 		//pas utile c'est le seul que j'ai crééé 
 		//if (!file.exists()) {
