@@ -1,10 +1,14 @@
 
 public class Menu {
 
+	
+	//création des menus
 	public String plate1;
 	public String plate2;
 	public String plate3;
 	public String plate4;
+
+		
 	
 	
 	public Menu (String plate1,String plate2,String plate3,String plate4) {
@@ -15,8 +19,10 @@ public class Menu {
 		
 		
 	}
+		
  public String toString() {
-	 return " est composé de : " + this.plate1 + " , " +  this.plate2 + " , " +  this.plate3 + " , " + this.plate4 + " quel est votre choix ?" ;
+	 return " est composé de : " + this.plate1 + " , " +  this.plate2 + " , " +  this.plate3 + " , " 
+			 + this.plate4 + " , " + "quel est votre choix ?" ;
  }
 
 	public String getPlate1() {
