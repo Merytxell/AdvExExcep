@@ -20,10 +20,14 @@ public class TestResto {
 		Menu dessert = new Menu ("tiramisu","mousse au chocolat","tarte maison","aucun");
 		System.out.println("les desserts à la carte" + dessert);
 		
-}
-	
-	Thread client1 = new Thread(new Client("Client 1", menu));
-    Thread client2 = new Thread(new Client("Client 2", menu));
 
+	//faire fonctionner le constructeur
+	Thread client1 = new Thread(new Client("Client 1",starter));
+    Thread client2 = new Thread(new Client("Client 2", starter));
+
+    
+    	client1.start();
+    	client2.start();
 	
+}
 }

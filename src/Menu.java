@@ -7,6 +7,7 @@ public class Menu {
 	public String plate2;
 	public String plate3;
 	public String plate4;
+	private String chosenPlate;
 
 		
 	
@@ -19,6 +20,21 @@ public class Menu {
 		
 		
 	}
+	
+	public void choosePlate(String plate) {
+		try{
+			chosenPlate = plate;
+			System.out.println("vous avez choisi :" + chosenPlate);
+		}finally {
+			System.out.println("très bon choix");
+		}
+	}
+	
+	public String getChosenPlate() {
+		return chosenPlate;
+		
+	}
+	
 		
  public String toString() {
 	 return " est composé de : " + this.plate1 + " , " +  this.plate2 + " , " +  this.plate3 + " , " 
