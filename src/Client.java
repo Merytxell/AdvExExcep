@@ -1,5 +1,3 @@
-
-
 public class Client implements Runnable {
 	//super(name); il était déjà en dessous
 	private String name;
@@ -14,6 +12,7 @@ public class Client implements Runnable {
 	@Override
 	public void run() {
 		try {
+			//System.out.println();
 			choiseClient();//déterminer comment le client va faire son choix
 			
 		}catch (InterruptedException e) {
@@ -21,8 +20,10 @@ public class Client implements Runnable {
 		}
 
 	}
-	private void choiseClient() throws InterruptedException{
+	public synchronized void choiseClient() throws InterruptedException{
 		
+		
+		//System.out.println("choix du client " + this.name);
 		//vitesse à laaquelle le client choisi son plat 
 		Thread.sleep(1000);
 		
@@ -32,11 +33,14 @@ public class Client implements Runnable {
 		String [] plateSideDish = {"riz", "pâtes","frites","légumes"};
 		String [] plateDrinks = {"soda","eau plate", "eau gazeuse","vin"};
 		String [] plateDesserts = {"tiramisu","mousse au chocolat","tarte maison","aucun"};
+		
 		String randomPlate = plates[(int) (Math.random()*plates.length)];
 		String randomPlateDish = plateDish[(int) (Math.random()*plateDish.length)];
 		String randomPlateSideDish = plateSideDish[(int) (Math.random()*plateSideDish.length)];
 		String randomPlateDrinks = plateDrinks[(int) (Math.random()*plateDrinks.length)];
 		String randomPlateDessert = plateDesserts[(int) (Math.random()*plateDesserts.length)];
+		
+		System.out.println(this.name + " a choisi :" + menu.getChosenPlate());
 		
 		try {
 		menu.choosePlate(randomPlate);
@@ -52,24 +56,18 @@ public class Client implements Runnable {
 	}
 	
 	
-	@Override
-	public String toString() {
-		return "Client [name=" + name + ", menu=" + menu + "]";
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public Menu getMenu() {
-		return menu;
-	}
-	public void setMenu(Menu menu) {
-		this.menu = menu;
-	}
-	
-	}
+	/*
+	 * @Override public String toString() { return "Client [name=" + name +
+	 * ", menu=" + menu + "]"; }
+	 */
+}
+/*
+ * public String getName() { return name; } public void setName(String name) {
+ * this.name = name; } public Menu getMenu() { return menu; } public void
+ * setMenu(Menu menu) { this.menu = menu; }
+ * 
+ * }
+ */
 
 
 
