@@ -1,20 +1,15 @@
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+
 
 public class Client implements Runnable {
 	//super(name); il était déjà en dessous
 	private String name;
 	private Menu menu;
-	private Lock lock;
 
-
-
-	public Client (String name, Menu menu) {
+	public Client (String name, Menu menu, Menu dish, Menu sideDish, Menu drinks, Menu dessert) {
 		this.name=name;
 		this.menu=menu;
-		//Verrou / sert à ce que les clients ne fasse pas comme pedro et sancho
-		this.lock = new ReentrantLock();
-
+	
+		
 	}
 	@Override
 	public void run() {
@@ -31,21 +26,36 @@ public class Client implements Runnable {
 		//vitesse à laaquelle le client choisi son plat 
 		Thread.sleep(1000);
 		
-		//gestion des entrées
+		//gestion des menus
 		String[] plates = {"salade", "quiche", "soupe","aucun" };
+		String [] plateDish = {"poulet","boeuf","poisson","végan"};
+		String [] plateSideDish = {"riz", "pâtes","frites","légumes"};
+		String [] plateDrinks = {"soda","eau plate", "eau gazeuse","vin"};
+		String [] plateDesserts = {"tiramisu","mousse au chocolat","tarte maison","aucun"};
 		String randomPlate = plates[(int) (Math.random()*plates.length)];
-		
-		lock.lock();
+		String randomPlateDish = plateDish[(int) (Math.random()*plateDish.length)];
+		String randomPlateSideDish = plateSideDish[(int) (Math.random()*plateSideDish.length)];
+		String randomPlateDrinks = plateDrinks[(int) (Math.random()*plateDrinks.length)];
+		String randomPlateDessert = plateDesserts[(int) (Math.random()*plateDesserts.length)];
 		
 		try {
 		menu.choosePlate(randomPlate);
-	}finally {
-	lock.unlock();
+		menu.choosePlate(randomPlateDish);
+		menu.choosePlate(randomPlateSideDish);
+		menu.choosePlate(randomPlateDrinks);
+		menu.choosePlate(randomPlateDessert);
 	
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "Client [name=" + name + ", menu=" + menu + "]";
 	}
-	
-	
 	public String getName() {
 		return name;
 	}
@@ -58,13 +68,9 @@ public class Client implements Runnable {
 	public void setMenu(Menu menu) {
 		this.menu = menu;
 	}
-	public Lock getLock() {
-		return lock;
-	}
-	public void setLock(Lock lock) {
-		this.lock = lock;
+	
 	}
 
-}
+
 
 

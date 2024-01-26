@@ -1,5 +1,3 @@
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class Menu {
 
@@ -10,7 +8,7 @@ public class Menu {
 	public String plate3;
 	public String plate4;
 	private String chosenPlate;
-	private Lock choiceLock = new ReentrantLock();
+	
 		
 	
 	
@@ -28,11 +26,12 @@ public class Menu {
 			chosenPlate = plate;
 			System.out.println("vous avez choisi :" + chosenPlate);
 			System.out.println("très bon choix");
-		}finally {
-			choiceLock.unlock();
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
 			
 		}
-	}
+	
 	
 	public String getChosenPlate() {
 		return chosenPlate;

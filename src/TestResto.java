@@ -22,12 +22,12 @@ public class TestResto {
 		
 
 	//faire fonctionner le constructeur
-	Thread client1 = new Thread(new Client("Client 1",starter));
-    Thread client2 = new Thread(new Client("Client 2", starter));
+	Thread client1 = new Thread(new Client("Client 1",starter,dish,sideDish,drinks,dessert));
+    //Thread client2 = new Thread(new Client("Client 2", starter,dish,sideDish,drinks,dessert));
+    System.out.println(client1);
 
-    
     	client1.start();
-    	client2.start();
+    	//client2.start();
 	
 }
 }
