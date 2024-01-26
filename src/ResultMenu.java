@@ -1,7 +1,3 @@
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +24,6 @@ public synchronized  List <String> getResponses(){
 }
 }
 
-//récupérr les réponses en thread
+//récupérr les réponses en thread 
 //faire une sorte de liste de ces choix
 //les recopier dans le fichier

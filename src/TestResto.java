@@ -2,6 +2,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collector;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
@@ -26,10 +28,11 @@ public class TestResto extends Thread {
 		Menu dessert = new Menu ("tiramisu","mousse au chocolat","tarte maison","aucun");
 		//System.out.println("les desserts à la carte" + dessert);
 
+		ResultMenu resultMenu = new ResultMenu ();
 
-		//faire fonctionner le constructeur
-		Thread client1 = new Thread(new Client("Client 1",starter,dish,sideDish,drinks,dessert));
-		Thread client2 = new Thread(new Client("Client 2", starter,dish,sideDish,drinks,dessert));
+		//faire fonctionner le constructeur + ajouter le résultat des menus
+		Thread client1 = new Thread(new Client("Client 1",starter,dish,sideDish,drinks,dessert, resultMenu));
+		Thread client2 = new Thread(new Client("Client 2", starter,dish,sideDish,drinks,dessert, resultMenu));
 		//System.out.println(client1);
 
 		client1.start();
@@ -37,33 +40,37 @@ public class TestResto extends Thread {
 
 	}
 
-	public class CreateFile {
-		
-		
+	//on doit écrire les résultats affiché en console ici "en forme de liste"
+	private static void  CreateFile (List <String> collect, String File ){
+
+
 		File file = new File("C:\\Users\\AvilaC\\eclipse-workspace\\AdvExExcep\\order.txt");
 
-		if (!file.exists()) {
-			try {
+		//pas utile c'est le seul que j'ai crééé 
+		//if (!file.exists()) {
 
-				file.createNewFile();
-			} catch(IOException e) {
-				e.printStackTrace();
-			}
-		}else{
-			FileWriter writer;
-			try {
-				writer = new FileWriter(file);
-				BufferedWriter bw = new BufferedWriter(writer);
-				bw.write("Hello");
+		try 
+		(FileWriter writer = new FileWriter(file);
+				BufferedWriter bw = new BufferedWriter(writer)){
+
+			for (String collects : collect) {
+				bw.write(collects);
 				bw.newLine();
 				bw.close();
 				writer.close();
-			} catch (IOException e) {
-				e.printStackTrace();
 			}
+		} catch(IOException e) {
+			e.printStackTrace();
+
+			//file.createNewFile();
+
+
+			//FileWriter writer;
+			//try {
+			//writer = new FileWriter(file);
+
 
 		}
+
 	}
 }
-}
-

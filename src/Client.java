@@ -2,10 +2,12 @@ public class Client implements Runnable {
 	//super(name); il était déjà en dessous
 	private String name;
 	private Menu menu;
+	private ResultMenu resultMenu;
 
-	public Client (String name, Menu menu, Menu dish, Menu sideDish, Menu drinks, Menu dessert) {
+	public Client (String name, Menu menu, Menu dish, Menu sideDish, Menu drinks, Menu dessert, ResultMenu resultMenu) {
 		this.name=name;
 		this.menu=menu;
+		this.resultMenu=resultMenu;
 	
 		
 	}
