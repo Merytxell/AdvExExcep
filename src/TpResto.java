@@ -1,6 +1,10 @@
-	import java.io.File;
+	
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.FilterWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-	import java.util.Scanner;
+import java.util.Scanner;
 
 
 public class TpResto {
@@ -22,6 +26,7 @@ public class TpResto {
 			ArrayList<String>  order = new ArrayList<String>();
 			for(int i = 0 ; i < nbMenu ; i ++) {
 				System.out.println("Commande numéro " + (i+1));
+				System.out.println(order);
 				int result = getInfos(scan,STARTER[0]);
 				if(STARTER.length-1 > result)	order.add(STARTER[result]);
 			
@@ -38,11 +43,27 @@ public class TpResto {
 				if(DESSERTS.length-1 > result)	order.add(DESSERTS[result]);	
 				
 				System.out.println("Résumé de la commande "+(i+1));
+				createFile(order, i+1);
 				System.out.println(order);		//ici on pourrait stocker la commande en base par exemple
 				System.out.println();			//avant de passer à la suivante
 				order.clear();
 			}	
 			scan.close();
+		}
+		private static void createFile (ArrayList <String> order, int Oder) {
+			String FileName = "ResultOrder.txt";
+			
+			try( BufferedWriter writer = new BufferedWriter (new FileWriter  (FileName, true))){
+				writer.write("résumé de la commande" + order + FileName);
+				for (String item : order) {
+					writer.write(item);
+				}
+				writer.newLine();
+				System.out.println("résumé de la commande" + order +" a bien été enregistré dans le récapitulatif des commandes");
+			}catch(IOException e) {
+				System.out.println("erreur system lors de l'enregistrement du récapitualtif");
+				e.printStackTrace();
+			}
 		}
 		public static int getInfos(Scanner scan, String info) {
 			System.out.println("choix " + info + " : ");
@@ -62,12 +83,7 @@ public class TpResto {
 			}			
 			return value; 
 		}	
-		private static void  CreateFile (int getInfos, Scanner scan, String info, String File ) {
-			File file = new File ("C:\\Users\\AvilaC\\eclipse-workspace\\AdvExExcep//ResultOrder.txt");
-			
-			
-			
-		}
+	
 		public static int displayTable(String [] table) {
 			for(int i=1;i<table.length;i++) {			
 				System.out.print("[" + i + " - " + table[i].toUpperCase() + "]");
